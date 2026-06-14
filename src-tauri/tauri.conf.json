@@ -1,7 +1,11 @@
 {
     "identifier": "com.linux-install-manager.app",
     "productName": "Linux Install Manager",
+<<<<<<< HEAD
+    "version": "1.0.1",
+=======
     "version": "1.0.0",
+>>>>>>> 39c985bac17e2f2f24011c5be7a338a4ef1b0bbd
     "build": {
         "beforeDevCommand": "npm run dev",
         "beforeBuildCommand": "npm run build",

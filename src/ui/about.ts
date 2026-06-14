@@ -7,7 +7,11 @@ export class AboutUI {
     private btnOpen: HTMLElement | null;
     private btnClose: HTMLElement | null;
     private versionEl: HTMLElement | null;
+<<<<<<< HEAD
+    private version = '1.0.1';
+=======
     private version = '1.0.0';
+>>>>>>> 39c985bac17e2f2f24011c5be7a338a4ef1b0bbd
 
     constructor() {
         this.modal = document.getElementById('about-modal');

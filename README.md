@@ -3,7 +3,11 @@
   <h1>Linux Install Manager</h1>
   <p>Linux kurulum dosyalarını analiz eden, kurulumu görünür bir terminalde çalıştıran ve işlemleri kaydeden masaüstü uygulaması.</p>
 
+<<<<<<< HEAD
+  ![Sürüm](https://img.shields.io/badge/version-1.0.1-2563eb)
+=======
   ![Sürüm](https://img.shields.io/badge/version-1.0.0-2563eb)
+>>>>>>> 39c985bac17e2f2f24011c5be7a338a4ef1b0bbd
   ![Platform](https://img.shields.io/badge/platform-Linux-f59e0b)
   ![Tauri](https://img.shields.io/badge/Tauri-2-24c8db)
   ![Rust](https://img.shields.io/badge/backend-Rust-b7410e)
@@ -52,19 +56,31 @@ En güncel paketleri [GitHub Releases](https://github.com/xinzore/Linux-Install-
 ### Debian / Ubuntu / Linux Mint
 
 ```bash
+<<<<<<< HEAD
+sudo apt install ./linux-install-manager_1.0.1_amd64.deb
+=======
 sudo apt install ./linux-install-manager_1.0.0_amd64.deb
+>>>>>>> 39c985bac17e2f2f24011c5be7a338a4ef1b0bbd
 ```
 
 ### Fedora / RHEL Tabanlı Dağıtımlar
 
 ```bash
+<<<<<<< HEAD
+sudo dnf install ./linux-install-manager-1.0.1-1.x86_64.rpm
+=======
 sudo dnf install ./linux-install-manager-1.0.0-1.x86_64.rpm
+>>>>>>> 39c985bac17e2f2f24011c5be7a338a4ef1b0bbd
 ```
 
 ### Arch Linux / Manjaro
 
 ```bash
+<<<<<<< HEAD
+sudo pacman -U ./linux-install-manager-1.0.1-1-x86_64.pkg.tar.zst
+=======
 sudo pacman -U ./linux-install-manager-1.0.0-1-x86_64.pkg.tar.zst
+>>>>>>> 39c985bac17e2f2f24011c5be7a338a4ef1b0bbd
 ```
 
 ## Kaynaktan Çalıştırma

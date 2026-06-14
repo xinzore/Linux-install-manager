@@ -203,6 +203,13 @@ export class TerminalPanel {
         const label = next.options.label || next.command;
         const description = next.options.description ? `\n# ${next.options.description}\n` : '\n';
         const markerCommand = `__lim_status=$?; printf '\\033]777;lim-command;${token};%s\\007' "$__lim_status"`;
+<<<<<<< HEAD
+        // Keep the completion marker in the same parsed shell line. Interactive
+        // tools such as sudo or apt can otherwise consume a following line as
+        // password or confirmation input before Bash gets a chance to run it.
+        const commandLine = `{\n${next.command}\n}; ${markerCommand}`;
+=======
+>>>>>>> 39c985bac17e2f2f24011c5be7a338a4ef1b0bbd
         this.activeCommand = {
             token,
             command: next.command,
@@ -215,7 +222,11 @@ export class TerminalPanel {
         this.renderQueue();
 
         try {
+<<<<<<< HEAD
+            await invoke('write_shell', { data: `${description}${commandLine}\n` });
+=======
             await invoke('write_shell', { data: `${description}${next.command}\n${markerCommand}\n` });
+>>>>>>> 39c985bac17e2f2f24011c5be7a338a4ef1b0bbd
         } catch (error) {
             const active = this.activeCommand;
             this.activeCommand = null;

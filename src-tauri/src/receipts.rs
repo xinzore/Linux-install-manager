@@ -156,6 +156,10 @@ impl ReceiptStore {
 
     /// Add a receipt
     pub fn add(&mut self, receipt: Receipt) {
+<<<<<<< HEAD
+        self.receipts.retain(|existing| existing.id != receipt.id);
+=======
+>>>>>>> 39c985bac17e2f2f24011c5be7a338a4ef1b0bbd
         self.receipts.push(receipt);
     }
 
@@ -277,3 +281,38 @@ fn package_status(command: &str, args: &[&str]) -> Option<bool> {
     }
     None
 }
+<<<<<<< HEAD
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn receipt(id: &str, app_name: &str) -> Receipt {
+        Receipt {
+            id: id.to_string(),
+            app_name: app_name.to_string(),
+            installed_at: "2026-06-14T00:00:00Z".to_string(),
+            source_path: "/tmp/package.deb".to_string(),
+            install_path: None,
+            installed_paths: Vec::new(),
+            package_name: Some("package".to_string()),
+            installer_type: "Deb".to_string(),
+            can_uninstall: true,
+            uninstall_command: None,
+            desktop_entry_path: None,
+            system_status: None,
+        }
+    }
+
+    #[test]
+    fn adding_the_same_receipt_updates_instead_of_duplicating() {
+        let mut store = ReceiptStore::default();
+        store.add(receipt("plan-1", "Old name"));
+        store.add(receipt("plan-1", "New name"));
+
+        assert_eq!(store.receipts.len(), 1);
+        assert_eq!(store.receipts[0].app_name, "New name");
+    }
+}
+=======
+>>>>>>> 39c985bac17e2f2f24011c5be7a338a4ef1b0bbd

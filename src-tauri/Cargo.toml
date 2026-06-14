@@ -1,6 +1,10 @@
 [package]
 name = "linux-install-manager"
+<<<<<<< HEAD
+version = "1.0.1"
+=======
 version = "1.0.0"
+>>>>>>> 39c985bac17e2f2f24011c5be7a338a4ef1b0bbd
 edition = "2021"
 
 [dependencies]

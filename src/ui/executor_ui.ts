@@ -48,12 +48,35 @@ export class ExecutorUI {
         const startedAt = new Date().toISOString();
         const commandSteps = plan.steps.filter(step => step.command);
         const stepResults: StepResult[] = [];
+<<<<<<< HEAD
+        const planId = crypto.randomUUID();
+        let succeeded = true;
+        let failureMessage = '';
+        let receiptPrepared = false;
+        const executedCommands: string[] = [];
+        const outputs: string[] = [];
+
+        // Persist enough information before starting an interactive installer.
+        // If the app or terminal closes after the package manager succeeds, the
+        // next system scan can still verify and retain the installed package.
+        if (plan.can_uninstall) {
+            try {
+                const pendingResult = await this.createExecutionResult(plan, planId, [], true, '');
+                await invoke('save_receipt', { result: pendingResult });
+                receiptPrepared = true;
+            } catch (error) {
+                console.error('Failed to prepare installation receipt:', error);
+            }
+        }
+
+=======
         let planId: string = crypto.randomUUID();
         let succeeded = true;
         let failureMessage = '';
         const executedCommands: string[] = [];
         const outputs: string[] = [];
 
+>>>>>>> 39c985bac17e2f2f24011c5be7a338a4ef1b0bbd
         await notifyUser(
             i18n.t('notifications.install_started_title'),
             this.formatMessage(i18n.t('notifications.install_started_body'), appName)
@@ -110,6 +133,14 @@ export class ExecutorUI {
                 this.formatMessage(i18n.t('notifications.install_success_body'), appName)
             );
         } else {
+<<<<<<< HEAD
+            if (receiptPrepared) {
+                await invoke('remove_receipt', { id: planId }).catch(error => {
+                    console.error('Failed to remove pending receipt:', error);
+                });
+            }
+=======
+>>>>>>> 39c985bac17e2f2f24011c5be7a338a4ef1b0bbd
             await notifyUser(
                 i18n.t('notifications.install_failed_title'),
                 this.formatMessage(i18n.t('notifications.install_failed_body'), appName)
