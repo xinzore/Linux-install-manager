@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linux Install Manager</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- Navigation -->
+    <nav class="main-nav">
+      <div class="nav-tabs">
+        <button class="nav-btn active" data-tab="install" data-i18n="nav.install">Install</button>
+        <button class="nav-btn" data-tab="receipts" data-i18n="nav.receipts">Receipts</button>
+        <button class="nav-btn" data-tab="history" data-i18n="nav.history">History</button>
+        <button class="nav-btn" data-tab="system" data-i18n="nav.system">System</button>
+      </div>
+      <div class="nav-actions">
+        <button id="btn-about" data-i18n-title="common.about" title="About" aria-label="About">ℹ️</button>
+        <button id="btn-settings" data-i18n-title="common.settings" title="Settings" aria-label="Settings">⚙️</button>
+      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main>
+      <!-- Install Tab -->
+      <div id="tab-install" class="tab-content active">
+        <!-- Drop Zone -->
+        <div id="drop-zone">
+          <div>
+            <p data-i18n="dropzone.title">Drop installer files here</p>
+            <p data-i18n="dropzone.subtitle">.deb, .rpm, .AppImage, .sh, .tar.gz</p>
+          </div>
+        </div>
+
+        <!-- Plan Panel (hidden by default) -->
+        <div id="plan-panel"></div>
+
+        <!-- Terminal Panel -->
+          <div id="terminal-panel">
+          <div class="terminal-header">
+            <div class="terminal-title">
+              <span data-i18n="terminal.title">Terminal</span>
+              <span id="terminal-status" class="terminal-status ready" aria-live="polite">Hazır</span>
+              <span id="terminal-command" class="terminal-command"></span>
+              <span id="terminal-queue" class="terminal-queue"></span>
+            </div>
+            <div class="terminal-actions">
+              <button id="terminal-cancel" class="btn-secondary" disabled>
+                <span class="btn-icon">■</span>
+                <span data-i18n="terminal.cancel">İptal</span>
+              </button>
+              <button id="terminal-retry" class="btn-secondary" disabled>
+                <span class="btn-icon">↻</span>
+                <span data-i18n="terminal.retry">Yeniden Dene</span>
+              </button>
+              <button id="terminal-copy" class="btn-secondary">
+                <span class="btn-icon">📋</span>
+                <span data-i18n="terminal.copy">Kopyala</span>
+              </button>
+              <button id="terminal-clear" class="btn-secondary">
+                <span class="btn-icon">🧽</span>
+                <span data-i18n="terminal.clear">Temizle</span>
+              </button>
+            </div>
+          </div>
+            <div id="terminal-container"></div>
+          </div>
+
+          <div id="post-install-actions" class="post-install-actions hidden"></div>
+        </div>
+
+      <!-- Receipts Tab -->
+      <div id="tab-receipts" class="tab-content" style="display: none;">
+        <div id="receipts-list"></div>
+      </div>
+
+      <div id="tab-history" class="tab-content" style="display: none;">
+        <div id="history-list"></div>
+      </div>
+
+      <div id="tab-system" class="tab-content" style="display: none;">
+        <div id="system-panel"></div>
+      </div>
+    </main>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="hidden">
+      <div>
+        <h2 data-i18n="common.settings">Settings</h2>
+
+        <div class="form-group">
+          <label data-i18n="settings.language">Language</label>
+          <select id="lang-select">
+            <option value="tr">Türkçe</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="de">Deutsch</option>
+            <option value="it">Italiano</option>
+            <option value="pt">Português</option>
+            <option value="fr">Français</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label data-i18n="settings.theme">Theme</label>
+          <select id="theme-select">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="system">System</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label data-i18n="settings.file_associations">File Associations</label>
+          <p class="settings-note" data-i18n="settings.file_associations_hint">Enable double-click opening for .deb,
+            .rpm, .pkg.tar.zst, .AppImage and .sh files.</p>
+          <button id="btn-install-associations" class="btn-secondary">
+            <span class="btn-icon">🔗</span>
+            <span data-i18n="settings.install_associations">Install File Associations</span>
+          </button>
+          <p id="settings-associations-status" class="settings-note"></p>
+        </div>
+
+        <div class="actions">
+          <button id="btn-close-settings" data-i18n="common.close">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- First Run Wizard -->
+    <div id="wizard-modal" class="hidden">
+      <div class="wizard-card" role="dialog" aria-modal="true">
+        <h2 class="wizard-title" data-i18n="wizard.title">Hoş Geldiniz</h2>
+        <p class="wizard-subtitle" data-i18n="wizard.subtitle">Başlamadan önce kısa bir ayar yapalım.</p>
+
+        <div class="wizard-section">
+          <label data-i18n="wizard.language">Dil</label>
+          <select id="wizard-lang-select">
+            <option value="tr">Türkçe</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="de">Deutsch</option>
+            <option value="it">Italiano</option>
+            <option value="pt">Português</option>
+            <option value="fr">Français</option>
+          </select>
+        </div>
+
+        <div class="wizard-section wizard-toggle">
+          <div>
+            <div class="wizard-toggle-title" data-i18n="wizard.associations_title">Dosya ilişkilendirmeleri</div>
+            <div class="wizard-toggle-note" data-i18n="wizard.associations_note">.deb, .rpm, .pkg.tar.zst, .AppImage ve
+              .sh dosyaları çift tıkla açılır.</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="wizard-associations" />
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="wizard-actions">
+          <button id="wizard-skip" class="btn-secondary" data-i18n="wizard.skip">Şimdi değil</button>
+          <button id="wizard-finish" class="btn-primary" data-i18n="wizard.finish">Bitir</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Modal -->
+    <div id="about-modal" class="hidden">
+      <div>
+        <h2 data-i18n="about.title">About</h2>
+        <p class="about-text" data-i18n="about.description">Linux Install Manager — safe and transparent installer
+          manager.</p>
+        <div class="about-list">
+          <div class="about-row">
+            <span data-i18n="about.version">Version</span>
+            <strong id="about-version">1.0.0</strong>
+          </div>
+          <div class="about-row">
+            <span data-i18n="about.developer">Developer</span>
+            <strong>Xinzore</strong>
+          </div>
+          <div class="about-row">
+            <span data-i18n="about.email">Email</span>
+            <a href="mailto:xinzore@gmail.com">xinzore@gmail.com</a>
+          </div>
+          <div class="about-row">
+            <span data-i18n="about.website">Website</span>
+            <a href="https://xinzore.vercel.app" target="_blank" rel="noreferrer">xinzore.vercel.app</a>
+          </div>
+          <div class="about-row">
+            <span data-i18n="about.github">GitHub</span>
+            <a href="https://github.com/xinzore/Linux-Install-Manager" target="_blank"
+              rel="noreferrer">github.com/xinzore/Linux-Install-Manager</a>
+          </div>
+        </div>
+        <div class="actions">
+          <button id="btn-close-about" data-i18n="common.close">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>

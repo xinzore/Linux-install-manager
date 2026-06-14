@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/vnd.appimage">
+    <comment>AppImage application</comment>
+    <glob pattern="*.AppImage"/>
+    <glob pattern="*.appimage"/>
+  </mime-type>
+  <mime-type type="application/x-appimage">
+    <comment>AppImage application</comment>
+    <glob pattern="*.AppImage"/>
+    <glob pattern="*.appimage"/>
+  </mime-type>
+  <mime-type type="application/vnd.debian.binary-package">
+    <comment>Debian package</comment>
+    <glob pattern="*.deb"/>
+  </mime-type>
+  <mime-type type="application/x-deb">
+    <comment>Debian package</comment>
+    <glob pattern="*.deb"/>
+  </mime-type>
+  <mime-type type="application/x-rpm">
+    <comment>RPM package</comment>
+    <glob pattern="*.rpm"/>
+  </mime-type>
+  <mime-type type="application/x-redhat-package-manager">
+    <comment>RPM package</comment>
+    <glob pattern="*.rpm"/>
+  </mime-type>
+  <mime-type type="application/x-archlinux-package">
+    <comment>Arch Linux package</comment>
+    <glob pattern="*.pkg.tar.zst"/>
+    <glob pattern="*.pkg.tar.xz"/>
+  </mime-type>
+  <mime-type type="application/x-shellscript">
+    <comment>Shell script</comment>
+    <glob pattern="*.sh"/>
+  </mime-type>
+  <mime-type type="text/x-shellscript">
+    <comment>Shell script</comment>
+    <glob pattern="*.sh"/>
+  </mime-type>
+</mime-info>

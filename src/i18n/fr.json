@@ -1,0 +1,93 @@
+{
+  "common": {
+    "welcome": "Bienvenue",
+    "install": "Installer",
+    "uninstall": "Désinstaller",
+    "cancel": "Annuler",
+    "settings": "Paramètres",
+    "about": "About"
+  },
+  "settings": {
+    "language": "Langue",
+    "theme": "Thème",
+    "dark": "Sombre",
+    "light": "Clair",
+    "system": "Système",
+    "file_associations": "File Associations",
+    "file_associations_hint": "Enable double-click opening for .deb, .rpm, .pkg.tar.zst, .AppImage and .sh files.",
+    "install_associations": "Install File Associations",
+    "associations_installing": "Installing...",
+    "associations_installed": "File associations installed.",
+    "associations_failed": "Installation failed."
+  },
+  "terminal": {
+    "title": "Terminal",
+    "copy": "Copy",
+    "clear": "Clear"
+  },
+  "app": {
+    "title": "Linux Install Manager"
+  },
+  "receipts": {
+    "select_all": "Select All",
+    "delete_selected": "Delete Selected",
+    "clear_all": "Clear All",
+    "search_placeholder": "Search...",
+    "no_results": "No results found.",
+    "confirm_delete_selected": "Do you want to delete the selected records?",
+    "confirm_clear_all": "Do you want to delete all records?",
+    "source": "Source"
+  },
+  "planner": {
+    "execute_noconfirm": "Install Without Prompts",
+    "summary_steps": "Steps",
+    "summary_root": "Root",
+    "summary_type": "Type",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "script": {
+    "preview_title": "Script Preview",
+    "preview_note": "Not executed automatically.",
+    "loading": "Loading...",
+    "copy_content": "Copy content",
+    "show_full": "Show full script",
+    "copied": "Copied",
+    "run_in_terminal": "Run Script in Terminal",
+    "run_header": "Running script",
+    "preview_error": "Failed to read script."
+  },
+  "archive": {
+    "title": "Destination Folder",
+    "note": "Archive will be extracted here.",
+    "not_selected": "Not selected",
+    "choose": "Choose Folder",
+    "extract": "Extract archive",
+    "summary": "Archive will be extracted to"
+  },
+  "about": {
+    "title": "About",
+    "description": "Linux Install Manager — safe and transparent installer manager.",
+    "version": "Version",
+    "developer": "Developer",
+    "email": "Email",
+    "website": "Website",
+    "github": "GitHub"
+  },
+  "associations": {
+    "title": "File Associations",
+    "message": "Do you want to install file associations?",
+    "note": "Double-click opening for .deb, .rpm, .pkg.tar.zst, .AppImage and .sh files.",
+    "later": "Later",
+    "install": "Install"
+  },
+  "wizard": {
+    "title": "Welcome",
+    "subtitle": "Let's set a few basics before you start.",
+    "language": "Language",
+    "associations_title": "File Associations",
+    "associations_note": "Double-click opening for .deb, .rpm, .pkg.tar.zst, .AppImage and .sh files.",
+    "skip": "Not now",
+    "finish": "Finish"
+  }
+}

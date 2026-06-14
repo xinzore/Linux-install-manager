@@ -1,0 +1,49 @@
+{
+    "identifier": "com.linux-install-manager.app",
+    "productName": "Linux Install Manager",
+    "version": "1.0.0",
+    "build": {
+        "beforeDevCommand": "npm run dev",
+        "beforeBuildCommand": "npm run build",
+        "devUrl": "http://localhost:1420",
+        "frontendDist": "../dist"
+    },
+    "app": {
+        "withGlobalTauri": true,
+        "windows": [
+            {
+                "title": "Linux Install Manager",
+                "width": 1024,
+                "height": 768
+            }
+        ],
+        "security": {
+            "csp": null
+        }
+    },
+    "bundle": {
+        "active": true,
+        "targets": "all",
+        "icon": [
+            "../iconlar/icon-32.png",
+            "../iconlar/icon-128.png",
+            "../iconlar/icon-256.png",
+            "../iconlar/icon-512.png",
+            "../iconlar/icon.svg"
+        ],
+        "category": "Utility",
+        "linux": {
+            "deb": {
+                "desktopTemplate": "linux-install-manager.desktop.hbs"
+            },
+            "rpm": {
+                "desktopTemplate": "linux-install-manager.desktop.hbs"
+            }
+        }
+    },
+    "plugins": {
+        "shell": {
+            "open": true
+        }
+    }
+}
